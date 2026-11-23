@@ -1,0 +1,1476 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="default" />
+<title>منصة ريتال للقدرات والتحصيلي</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #fdfaf8;
+    --surface: #ffffff;
+    --surface-soft: #faf4f2;
+    --rose: #d97798;
+    --rose-light: #fcebf1;
+    --rose-dark: #a64b6b;
+    --plum: #6d4c7d;
+    --plum-light: #f3ecf7;
+    --mint: #2f8f76;
+    --mint-light: #e6f6f1;
+    --amber: #c97a16;
+    --amber-light: #fef4e4;
+    --text: #2b222a;
+    --muted: #766672;
+    --border: #efe3e7;
+    --shadow: 0 8px 24px rgba(109, 76, 125, 0.06);
+    --radius: 18px;
+  }
+
+  * {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    margin: 0;
+    font-family: 'Tajawal', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.65;
+    padding-bottom: 48px;
+  }
+
+  .topbar {
+    background: linear-gradient(120deg, #fff5f8 0%, #f8f2fc 55%, #fff9f2 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 14px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    backdrop-filter: blur(10px);
+  }
+
+  .topbar-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .brand-badge {
+    width: 40px;
+    height: 40px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, var(--rose), var(--plum));
+    color: #fff;
+    display: grid;
+    place-items: center;
+    font-weight: 800;
+    font-size: 18px;
+    box-shadow: 0 6px 14px rgba(217, 119, 152, 0.28);
+  }
+
+  .quote-pill {
+    flex: 1;
+    min-width: 240px;
+    background: rgba(255, 255, 255, 0.88);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 6px 16px;
+    font-size: 13.5px;
+    color: var(--plum);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 18px auto 0;
+    padding: 0 16px;
+  }
+
+  .tabs {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding-bottom: 6px;
+    margin-bottom: 18px;
+    scrollbar-width: none;
+  }
+
+  .tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .tab-btn {
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--muted);
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 13.5px;
+    padding: 10px 16px;
+    border-radius: 14px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.2s ease;
+  }
+
+  .tab-btn.active {
+    background: linear-gradient(135deg, var(--rose), #c85c82);
+    color: #fff;
+    border-color: transparent;
+    box-shadow: 0 6px 16px rgba(217, 119, 152, 0.25);
+  }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 18px;
+    box-shadow: var(--shadow);
+    margin-bottom: 16px;
+  }
+
+  .card-title {
+    font-size: 16px;
+    font-weight: 800;
+    margin: 0 0 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    color: var(--text);
+  }
+
+  .grid-4 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 14px;
+    margin-bottom: 16px;
+  }
+
+  .grid-2 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 16px;
+  }
+
+  .stat-val {
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--rose-dark);
+    margin: 4px 0;
+  }
+
+  .stat-sub {
+    font-size: 12.5px;
+    color: var(--muted);
+  }
+
+  .progress-wrap {
+    background: var(--surface-soft);
+    border-radius: 999px;
+    height: 11px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    margin: 8px 0;
+  }
+
+  .progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, var(--rose), var(--plum));
+    border-radius: 999px;
+    transition: width 0.35s ease;
+  }
+
+  .btn {
+    border: none;
+    border-radius: 12px;
+    padding: 9px 14px;
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 13px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    transition: transform 0.12s ease, opacity 0.2s ease;
+  }
+
+  .btn:active {
+    transform: scale(0.97);
+  }
+
+  .btn-primary {
+    background: var(--rose);
+    color: #fff;
+  }
+
+  .btn-plum {
+    background: var(--plum);
+    color: #fff;
+  }
+
+  .btn-soft {
+    background: var(--rose-light);
+    color: var(--rose-dark);
+  }
+
+  .btn-mint {
+    background: var(--mint-light);
+    color: var(--mint);
+  }
+
+  .btn-amber {
+    background: var(--amber-light);
+    color: var(--amber);
+  }
+
+  .btn-outline {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text);
+  }
+
+  input, select, textarea {
+    font-family: inherit;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 9px 12px;
+    font-size: 13.5px;
+    background: var(--surface);
+    color: var(--text);
+    width: 100%;
+  }
+
+  textarea {
+    min-height: 76px;
+    resize: vertical;
+  }
+
+  .task-item {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 12px 14px;
+    border-radius: 14px;
+    background: var(--surface-soft);
+    border: 1px solid var(--border);
+    margin-bottom: 10px;
+  }
+
+  .task-item.done {
+    background: var(--mint-light);
+    border-color: #bfe7db;
+  }
+
+  .unit-box {
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 14px;
+    margin-bottom: 12px;
+    background: var(--surface);
+  }
+
+  .unit-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+
+  .step-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 9px 12px;
+    border-radius: 12px;
+    background: var(--surface-soft);
+    margin-top: 8px;
+  }
+
+  .step-row.locked {
+    opacity: 0.55;
+    background: #f4f2f4;
+  }
+
+  .step-row.completed {
+    background: var(--mint-light);
+  }
+
+  .badge {
+    font-size: 11.5px;
+    font-weight: 700;
+    padding: 3px 9px;
+    border-radius: 999px;
+    display: inline-block;
+  }
+
+  .badge-rose { background: var(--rose-light); color: var(--rose-dark); }
+  .badge-plum { background: var(--plum-light); color: var(--plum); }
+  .badge-mint { background: var(--mint-light); color: var(--mint); }
+  .badge-amber { background: var(--amber-light); color: var(--amber); }
+
+  .vision-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+    gap: 12px;
+    margin-top: 12px;
+  }
+
+  .vision-card {
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    background: var(--surface-soft);
+    position: relative;
+  }
+
+  .vision-card img {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .cal-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 6px;
+    margin-top: 10px;
+  }
+
+  .cal-head {
+    text-align: center;
+    font-size: 12px;
+    font-weight: 800;
+    color: var(--muted);
+    padding: 4px;
+  }
+
+  .cal-day {
+    min-height: 76px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 6px;
+    background: #fff;
+    cursor: pointer;
+    font-size: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .cal-day.empty {
+    background: transparent;
+    border-color: transparent;
+    cursor: default;
+  }
+
+  .cal-day.today {
+    border: 2px solid var(--rose);
+    background: #fff7fa;
+  }
+
+  .cal-dot {
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 5px;
+    border-radius: 6px;
+    margin-top: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .ev-holiday { background: #dcfce7; color: #166534; }
+  .ev-exam { background: #fee2e2; color: #991b1b; }
+  .ev-tah { background: #f3e8ff; color: #6b21a8; }
+  .ev-custom { background: #fef3c7; color: #92400e; }
+  .ev-predict { background: #fce7f3; color: #9d174d; }
+
+  canvas#boardCanvas {
+    width: 100%;
+    height: 320px;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    background: #ffffff;
+    touch-action: none;
+    display: block;
+  }
+
+  .modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(35, 22, 34, 0.45);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 80;
+    padding: 16px;
+  }
+
+  .modal-backdrop.open {
+    display: flex;
+  }
+
+  .modal-box {
+    background: var(--surface);
+    border-radius: 20px;
+    max-width: 480px;
+    width: 100%;
+    padding: 20px;
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.18);
+    max-height: 88vh;
+    overflow-y: auto;
+  }
+
+  .hidden { display: none !important; }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">
+      <div class="brand-badge">ر</div>
+      <div>
+        <div style="font-weight:800;font-size:15px;">منصة ريتال للقدرات والتحصيلي</div>
+        <div style="font-size:11.5px;color:var(--muted);" id="todayLabel"></div>
+      </div>
+    </div>
+
+    <div class="quote-pill">
+      <span id="topQuote">«الخطوات الصغيرة المتواصلة تصنع الفارق الكبير الذي تحلمين به.»</span>
+      <button class="btn btn-soft" style="padding:4px 10px;font-size:11.5px;" onclick="cycleQuote()">عبارة أخرى</button>
+    </div>
+
+    <div style="display:flex;gap:6px;flex-wrap:wrap;">
+      <button class="btn btn-outline" style="padding:7px 11px;font-size:12px;" onclick="exportBackup()">نسخة احتياطية</button>
+      <label class="btn btn-outline" style="padding:7px 11px;font-size:12px;cursor:pointer;">
+        استعادة
+        <input type="file" accept=".json" style="display:none;" onchange="importBackup(event)" />
+      </label>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+  <div id="frozenBanner" class="card hidden" style="background:var(--amber-light);border-color:#f6d399;">
+    <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;">
+      <div>
+        <strong>اليوم مجمّد:</strong> <span id="frozenReasonText"></span>
+        <div style="font-size:12.5px;color:var(--amber);">تم تأجيل موعد الختمة المتوقع تلقائياً بسبب تجميد هذا اليوم.</div>
+      </div>
+      <button class="btn btn-amber" onclick="unfreezeToday()">إلغاء التجميد</button>
+    </div>
+  </div>
+
+  <nav class="tabs">
+    <button class="tab-btn active" data-tab="dash" onclick="switchTab('dash', this)">الرئيسية والإلهام</button>
+    <button class="tab-btn" data-tab="found" onclick="switchTab('found', this)">تأسيس المنصف (9 وحدات)</button>
+    <button class="tab-btn" data-tab="train" onclick="switchTab('train', this)">مهام التدريب اليومي</button>
+    <button class="tab-btn" data-tab="quiz" onclick="switchTab('quiz', this)">تحدي الـ 10 أسئلة والأخطاء</button>
+    <button class="tab-btn" data-tab="cal" onclick="switchTab('cal', this)">التقويم الميلادي</button>
+    <button class="tab-btn" data-tab="tools" onclick="switchTab('tools', this)">السبورة والملفات والأفكار</button>
+  </nav>
+
+  <!-- TAB 1: DASHBOARD & VISION -->
+  <section id="tab-dash">
+    <div class="grid-4">
+      <div class="card">
+        <div class="stat-sub">البداية الإلزامية للتحصيلي</div>
+        <div class="stat-val" id="tahDaysLeft">-- يوم</div>
+        <div class="stat-sub">الموعد المحدد: 9 يناير 2027</div>
+      </div>
+
+      <div class="card">
+        <div class="stat-sub">اليوم المتوقع لاختبار القدرات</div>
+        <div class="stat-val" id="predictedExamDate">--</div>
+        <div class="stat-sub" id="predictedExamNote">يتحدث تلقائياً حسب إنجازك وتجميد الأيام</div>
+      </div>
+
+      <div class="card">
+        <div class="stat-sub">مؤشر إنجاز التأسيس</div>
+        <div class="stat-val" id="foundPercent">0%</div>
+        <div class="progress-wrap"><div class="progress-bar" id="foundBar" style="width:0%"></div></div>
+        <div class="stat-sub" id="foundReminder">الحد الأدنى اليومي: 30 دقيقة تأسيس</div>
+      </div>
+
+      <div class="card">
+        <div class="stat-sub">وقت المذاكرة المسجل اليوم</div>
+        <div class="stat-val" id="todayTimerDisplay">00:00:00</div>
+        <div style="display:flex;gap:6px;margin-top:6px;">
+          <button class="btn btn-primary" style="padding:5px 10px;font-size:12px;" id="timerToggleBtn" onclick="toggleTimer()">ابدئي</button>
+          <button class="btn btn-outline" style="padding:5px 10px;font-size:12px;" onclick="resetTodayTimer()">تصفير</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-title">إعدادات الختمة ومدة التأسيس</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+          <div>
+            <label style="font-size:12.5px;font-weight:700;">مدة التأسيس (بالأيام)</label>
+            <input type="number" id="foundDaysInput" min="7" max="180" onchange="updatePlanSettings()" />
+          </div>
+          <div>
+            <label style="font-size:12.5px;font-weight:700;">إجمالي أسئلة الكمي للختمة</label>
+            <input type="number" id="targetQuantInput" min="100" step="50" onchange="updatePlanSettings()" />
+          </div>
+          <div>
+            <label style="font-size:12.5px;font-weight:700;">إجمالي أقسام اللفظي للختمة</label>
+            <input type="number" id="targetVerbalInput" min="20" step="10" onchange="updatePlanSettings()" />
+          </div>
+          <div>
+            <label style="font-size:12.5px;font-weight:700;">الأسئلة المنجزة تراكمياً (كمي)</label>
+            <input type="number" id="doneQuantInput" min="0" onchange="updatePlanSettings()" />
+          </div>
+        </div>
+        <div style="margin-top:10px;">
+          <label style="font-size:12.5px;font-weight:700;">الأقسام المنجزة تراكمياً (لفظي)</label>
+          <input type="number" id="doneVerbalInput" min="0" onchange="updatePlanSettings()" />
+        </div>
+        <div class="progress-wrap" style="margin-top:12px;">
+          <div class="progress-bar" id="overallTrainBar" style="width:0%"></div>
+        </div>
+        <div class="stat-sub" id="overallTrainText"></div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">لوحة عبارات وصور الإلهام الخاصة بكِ</div>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <input type="text" id="newVisionQuote" placeholder="اكتبي عبارة تحفيزية تضيفينها للوحة..." />
+          <div style="display:flex;gap:8px;flex-wrap:wrap;">
+            <input type="text" id="newVisionImgUrl" placeholder="رابط صورة (اختياري)..." style="flex:1;" />
+            <label class="btn btn-soft" style="cursor:pointer;">
+              رفع صورة من الجهاز
+              <input type="file" accept="image/*" style="display:none;" onchange="addVisionImageFile(event)" />
+            </label>
+            <button class="btn btn-primary" onclick="addVisionItem()">إضافة للوحة</button>
+          </div>
+        </div>
+        <div class="vision-grid" id="visionGrid"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TAB 2: FOUNDATION (9 UNITS) -->
+  <section id="tab-found" class="hidden">
+    <div class="card">
+      <div class="card-title">
+        <span>تأسيس المنصف — 9 وحدات بنظام القفل المتسلسل</span>
+        <span class="badge badge-plum" id="foundSummaryBadge">0 / 36 مكتمل</span>
+      </div>
+      <p style="font-size:13px;color:var(--muted);margin-top:0;">
+        اكتبي اسم كل وحدة كما تحبين، ويفتح الاختبار التالي فقط بعد الضغط على <strong>«تم»</strong> للخطوة التي تسبقه، مع إمكانية لصق رابط التلغرام المباشر لكل خطوة.
+      </p>
+      <div id="unitsContainer"></div>
+    </div>
+  </section>
+
+  <!-- TAB 3: DAILY TRAINING TASKS -->
+  <section id="tab-train" class="hidden">
+    <div class="card">
+      <div class="card-title">
+        <span id="trainDayHeading">مهام التدريب اليومي</span>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+          <button class="btn btn-mint" onclick="advanceTaskFromNextDay()">تقديم مهمة من الغد</button>
+          <button class="btn btn-amber" onclick="openFreezeModal()">تجميد اليوم</button>
+        </div>
+      </div>
+      <div style="font-size:12.5px;color:var(--muted);margin-bottom:12px;">
+        الجدول التلقائي: الأحد–الأربعاء (40 كمي + 15 لفظي) • الخميس–الجمعة (80 كمي + 20 لفظي) • السبت (مراجعة خفيفة).
+      </div>
+      <div id="trainingTasksList"></div>
+    </div>
+  </section>
+
+  <!-- TAB 4: 10 RANDOM QUESTIONS + MISTAKES -->
+  <section id="tab-quiz" class="hidden">
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-title">
+          <span>التحدي اليومي العشوائي (5 كمي + 5 لفظي)</span>
+          <span class="badge badge-rose" id="quizCounterBadge">0 / 10</span>
+        </div>
+        <div id="dailyQuizBox"></div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">
+          <span>دفتر الأخطاء والمراجعة الأسبوعية</span>
+          <span class="badge badge-amber" id="mistakesCountBadge">0 خطأ</span>
+        </div>
+        <div id="mistakesList"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TAB 5: CALENDAR -->
+  <section id="tab-cal" class="hidden">
+    <div class="card">
+      <div class="card-title">
+        <div style="display:flex;align-items:center;gap:8px;">
+          <button class="btn btn-outline" onclick="changeMonth(-1)">◀</button>
+          <span id="calMonthTitle" style="min-width:160px;text-align:center;"></span>
+          <button class="btn btn-outline" onclick="changeMonth(1)">▶</button>
+        </div>
+        <button class="btn btn-primary" onclick="openEventModal()">+ إضافة موعد</button>
+      </div>
+
+      <div style="display:flex;gap:8px;flex-wrap:wrap;font-size:12px;margin-bottom:10px;">
+        <span class="cal-dot ev-holiday">إجازات</span>
+        <span class="cal-dot ev-exam">اختبارات نهائية</span>
+        <span class="cal-dot ev-tah">التحصيلي</span>
+        <span class="cal-dot ev-predict">الختمة المتوقعة</span>
+        <span class="cal-dot ev-custom">مواعيدي</span>
+      </div>
+
+      <div class="cal-grid" id="calHeadGrid"></div>
+      <div class="cal-grid" id="calDaysGrid"></div>
+    </div>
+  </section>
+
+  <!-- TAB 6: WHITEBOARD, FILES, GOLDEN IDEAS -->
+  <section id="tab-tools" class="hidden">
+    <div class="card">
+      <div class="card-title">
+        <span>السبورة البيضاء التفاعلية (تدعم قلم الآيباد واللمس)</span>
+        <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap;">
+          <input type="color" id="penColor" value="#6d4c7d" style="width:42px;height:34px;padding:2px;" />
+          <input type="range" id="penSize" min="2" max="14" value="4" style="width:90px;" />
+          <button class="btn btn-outline" onclick="clearBoard()">مسح السبورة</button>
+        </div>
+      </div>
+      <canvas id="boardCanvas"></canvas>
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-title">أفكار المسائل الذهبية والقوانين</div>
+        <input type="text" id="ideaTitle" placeholder="عنوان الفكرة أو القانون..." style="margin-bottom:8px;" />
+        <textarea id="ideaBody" placeholder="اكتبي التريك أو القاعدة أو الملاحظة المهمة..."></textarea>
+        <button class="btn btn-plum" style="margin-top:8px;" onclick="addGoldenIdea()">حفظ الفكرة الذهبية</button>
+        <div id="goldenIdeasList" style="margin-top:12px;"></div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">مكتبة ملفاتي وملازمي</div>
+        <label class="btn btn-soft" style="cursor:pointer;width:100%;">
+          إضافة ملف (PDF / صورة / نص)
+          <input type="file" style="display:none;" onchange="addUserFile(event)" />
+        </label>
+        <div id="filesList" style="margin-top:12px;"></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- FREEZE MODAL -->
+<div class="modal-backdrop" id="freezeModal">
+  <div class="modal-box">
+    <h3 style="margin-top:0;">تجميد يوم المذاكرة</h3>
+    <p style="font-size:13px;color:var(--muted);">لا يمكن تجميد اليوم دون كتابة السبب، وسيتم تأجيل موعد الختمة المتوقع تلقائياً.</p>
+    <textarea id="freezeReasonInput" placeholder="اكتبي سبب تجميد اليوم..."></textarea>
+    <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:12px;">
+      <button class="btn btn-outline" onclick="closeFreezeModal()">إلغاء</button>
+      <button class="btn btn-amber" onclick="confirmFreezeToday()">تأكيد التجميد</button>
+    </div>
+  </div>
+</div>
+
+<!-- CALENDAR EVENT MODAL -->
+<div class="modal-backdrop" id="eventModal">
+  <div class="modal-box">
+    <h3 style="margin-top:0;">إضافة موعد وملاحظة في التقويم</h3>
+    <div style="display:flex;flex-direction:column;gap:10px;">
+      <div>
+        <label style="font-size:12.5px;font-weight:700;">التاريخ الميلادي</label>
+        <input type="date" id="evDateInput" />
+      </div>
+      <div>
+        <label style="font-size:12.5px;font-weight:700;">عنوان الموعد أو الملاحظة</label>
+        <input type="text" id="evTitleInput" placeholder="اكتبي الموعد أو الملاحظة..." />
+      </div>
+      <div>
+        <label style="font-size:12.5px;font-weight:700;">التصنيف اللوني</label>
+        <select id="evTypeInput">
+          <option value="custom">مواعيدي (أصفر/ذهبي)</option>
+          <option value="tah">التحصيلي (بنفسجي)</option>
+          <option value="exam">اختبارات نهائية (أحمر)</option>
+          <option value="holiday">إجازات (أخضر)</option>
+        </select>
+      </div>
+    </div>
+    <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:14px;">
+      <button class="btn btn-outline" onclick="closeEventModal()">إغلاق</button>
+      <button class="btn btn-primary" onclick="saveCalendarEvent()">حفظ في التقويم</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const STORAGE_KEY = 'reital_qudrat_platform_v2';
+
+const QUOTES = [
+  '«الخطوات الصغيرة المتواصلة تصنع الفارق الكبير الذي تحلمين به.»',
+  '«كل سؤال تحلينه اليوم يقرّبك خطوة أوسع من هدفكِ بإذن الله.»',
+  '«هدوؤكِ وتركيزكِ هما سلاحكِ الأقوى؛ ثقي بقدراتكِ.»',
+  '«لا يهم البطء أحياناً؛ المهم ألا تتوقفي عن المسير.»'
+];
+
+const BUILTIN_EVENTS = [
+  { date: '2026-11-19', endDate: '2026-11-28', title: 'إجازة الخريف', type: 'holiday' },
+  { date: '2027-01-03', endDate: '2027-01-07', title: 'اختبارات نهائية الفصل الأول', type: 'exam' },
+  { date: '2027-01-07', endDate: '2027-01-07', title: 'نهاية الترم الأول', type: 'holiday' },
+  { date: '2027-01-09', endDate: '2027-01-09', title: 'بداية مذاكرة التحصيلي (إلزامي)', type: 'tah' },
+  { date: '2027-01-17', endDate: '2027-01-17', title: 'العودة للدراسة - الترم الثاني', type: 'tah' },
+  { date: '2027-02-08', endDate: '2027-02-08', title: 'بداية رمضان', type: 'holiday' },
+  { date: '2027-02-21', endDate: '2027-02-22', title: 'إجازة يوم التأسيس', type: 'holiday' },
+  { date: '2027-02-26', endDate: '2027-03-13', title: 'إجازة عيد الفطر', type: 'holiday' },
+  { date: '2027-03-09', endDate: '2027-03-09', title: 'عيد الفطر', type: 'holiday' },
+  { date: '2027-03-30', endDate: '2027-05-22', title: 'إجازة عيد الأضحى', type: 'holiday' },
+  { date: '2027-04-14', endDate: '2027-04-14', title: 'موعد التسجيل للتحصيلي', type: 'tah' },
+  { date: '2027-05-27', endDate: '2027-05-27', title: 'التحصيلي - الفترة الأولى', type: 'tah' },
+  { date: '2027-06-04', endDate: '2027-06-04', title: 'التحصيلي - الفترة الثانية', type: 'tah' },
+  { date: '2027-06-27', endDate: '2027-07-01', title: 'اختبارات نهائية الفصل الثاني', type: 'exam' },
+  { date: '2027-07-01', endDate: '2027-07-01', title: 'نهاية السنة وآخر يوم بالثانوي', type: 'holiday' }
+];
+
+const QUESTION_BANK = [
+  { id: 'q1', sec: 'كمي', q: 'إذا كان سعر قلم 3 ريالات ودفتر 8 ريالات، فما تكلفة قلمين و3 دفاتر؟', opts: ['24 ريالاً', '30 ريالاً', '32 ريالاً', '28 ريالاً'], ans: 1, exp: '(2 × 3) + (3 × 8) = 6 + 24 = 30 ريالاً.' },
+  { id: 'q2', sec: 'كمي', q: 'ما قيمة 25% من 240؟', opts: ['40', '50', '60', '80'], ans: 2, exp: '25% تعني الربع، وربع 240 يساوي 60.' },
+  { id: 'q3', sec: 'كمي', q: 'مستطيل طوله 12 وعرضه 5، ما طول قطره؟', opts: ['13', '15', '17', '10'], ans: 0, exp: 'مثلث فيثاغورس الشهير (5، 12، 13).' },
+  { id: 'q4', sec: 'كمي', q: 'إذا كان 3 س = 27، فما قيمة س + 4؟', opts: ['11', '12', '13', '9'], ans: 2, exp: 'س = 9، إذن س + 4 = 13.' },
+  { id: 'q5', sec: 'كمي', q: 'معدل 4 أعداد هو 15، ما مجموع هذه الأعداد؟', opts: ['45', '50', '60', '75'], ans: 2, exp: 'المجموع = المتوسط × العدد = 15 × 4 = 60.' },
+  { id: 'q6', sec: 'كمي', q: 'عدد إذا أضفنا إليه نصفه أصبح 30، ما هو العدد؟', opts: ['15', '18', '20', '24'], ans: 2, exp: '1.5 س = 30 ⬅️ س = 20.' },
+  { id: 'q7', sec: 'لفظي', q: 'تناظر لفظي — كتاب : صفحات', opts: ['شجرة : أوراق', 'قلم : حبر', 'بحر : سفينة', 'بيت : شارع'], ans: 0, exp: 'الكتاب يتكون من صفحات، والشجرة تتكون من أوراق.' },
+  { id: 'q8', sec: 'لفظي', q: 'تناظر لفظي — طبيب : مستشفى', opts: ['طالب : حقيبة', 'معلم : مدرسة', 'مهندس : خوذة', 'طيار : سحاب'], ans: 1, exp: 'علاقة مكان العمل: الطبيب في المستشفى والمعلم في المدرسة.' },
+  { id: 'q9', sec: 'لفظي', q: 'إكمال جمل — القراءة تنير العقول وتوسّع ......', opts: ['الآفاق', 'الضجيج', 'العثرات', 'الجمود'], ans: 0, exp: 'توسّع الآفاق المعرفية.' },
+  { id: 'q10', sec: 'لفظي', q: 'إكمال جمل — من يزرع ...... يحصد نجاحاً باهراً.', opts: ['الكسل', 'المثابرة', 'التردد', 'الإهمال'], ans: 1, exp: 'المثابرة تقود إلى النجاح.' },
+  { id: 'q11', sec: 'لفظي', q: 'مفردة شاذة — تفاح، برتقال، موز، بطاطس', opts: ['تفاح', 'برتقال', 'موز', 'بطاطس'], ans: 3, exp: 'البطاطس من الخضروات الجذرية والبقية فواكه.' },
+  { id: 'q12', sec: 'لفظي', q: 'تناظر لفظي — عين : نظر', opts: ['أذن : سمع', 'يد : مشي', 'لسان : لمس', 'أنف : تذوق'], ans: 0, exp: 'علاقة عضو بحاسته: العين للنظر والأذن للسمع.' }
+];
+
+function getTodayISO() {
+  const now = new Date();
+  const y = now.getFullYear();
+  const m = String(now.getMonth() + 1).padStart(2, '0');
+  const d = String(now.getDate()).padStart(2, '0');
+  return `${y}-${m}-${d}`;
+}
+
+function defaultUnits() {
+  return Array.from({ length: 9 }, (_, i) => ({
+    num: i + 1,
+    customName: '',
+    steps: [
+      { key: 'vid', label: 'فيديو الشرح الأساسي', link: '', done: false },
+      { key: 't1', label: 'الاختبار الأول (فيديو)', link: '', done: false },
+      { key: 't2', label: 'الاختبار الثاني (فيديو)', link: '', done: false },
+      { key: 't3', label: 'الاختبار الثالث (فيديو)', link: '', done: false }
+    ]
+  }));
+}
+
+function defaultState() {
+  const today = getTodayISO();
+  return {
+    quoteIdx: 0,
+    foundDays: 30,
+    targetQuant: 2400,
+    targetVerbal: 300,
+    doneQuant: 0,
+    doneVerbal: 0,
+    todaySec: 0,
+    lastTimerDate: today,
+    units: defaultUnits(),
+    frozenDays: {},
+    advancedCounts: {},
+    completedTraining: {},
+    dailyQuiz: { date: today, qIds: [], answers: {}, completed: false },
+    mistakes: [],
+    customEvents: [],
+    visionItems: [
+      { id: 'v1', quote: 'هدفي واضح وخطوتي ثابتة نحو القمة بإذن الله.', img: '' }
+    ],
+    goldenIdeas: [],
+    files: []
+  };
+}
+
+function loadState() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (!raw) return defaultState();
+    const parsed = JSON.parse(raw);
+    const base = defaultState();
+    const merged = { ...base, ...parsed };
+    if (merged.lastTimerDate !== getTodayISO()) {
+      merged.todaySec = 0;
+      merged.lastTimerDate = getTodayISO();
+    }
+    return merged;
+  } catch {
+    return defaultState();
+  }
+}
+
+let state = loadState();
+let timerInterval = null;
+let calYear = 2026;
+let calMonth = 10;
+
+function saveState() {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  renderAll();
+}
+
+function switchTab(tabId, btnEl) {
+  document.querySelectorAll('section[id^="tab-"]').forEach(s => s.classList.add('hidden'));
+  document.getElementById('tab-' + tabId).classList.remove('hidden');
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  if (btnEl) btnEl.classList.add('active');
+  if (tabId === 'tools') setTimeout(resizeCanvas, 50);
+}
+
+function cycleQuote() {
+  state.quoteIdx = (state.quoteIdx + 1) % QUOTES.length;
+  saveState();
+}
+
+function getDailyTargets(dateStr) {
+  const d = new Date(dateStr + 'T12:00:00');
+  const day = d.getDay();
+  if (day === 6) {
+    return { label: 'السبت (مراجعة خفيفة)', quant: 0, verbal: 0, reviewOnly: true };
+  }
+  if (day === 4 || day === 5) {
+    return { label: day === 4 ? 'الخميس' : 'الجمعة', quant: 80, verbal: 20, reviewOnly: false };
+  }
+  const names = ['الأحد', 'الاثنين', 'الثلاثاء', 'الأربعاء'];
+  return { label: names[day], quant: 40, verbal: 15, reviewOnly: false };
+}
+
+function getTrainingTasksForDate(dateStr) {
+  const base = getDailyTargets(dateStr);
+  const adv = state.advancedCounts[dateStr] || { quant: 0, verbal: 0 };
+  const tasks = [];
+  tasks.push({
+    id: `${dateStr}_found30`,
+    title: 'تأسيس المنصف — حد أدنى 30 دقيقة يومياً',
+    tag: 'تأسيس',
+    badge: 'badge-plum'
+  });
+  const totalQ = base.quant + adv.quant;
+  const totalV = base.verbal + adv.verbal;
+  if (totalQ > 0) {
+    tasks.push({
+      id: `${dateStr}_quant_${totalQ}`,
+      title: `حل ${totalQ} سؤال كمي كحد أدنى${adv.quant ? ` (شامل +${adv.quant} مقدّمة)` : ''}`,
+      tag: 'كمي',
+      badge: 'badge-rose'
+    });
+  }
+  if (totalV > 0) {
+    tasks.push({
+      id: `${dateStr}_verbal_${totalV}`,
+      title: `إنجاز ${totalV} قسم لفظي${adv.verbal ? ` (شامل +${adv.verbal} مقدّمة)` : ''}`,
+      tag: 'لفظي',
+      badge: 'badge-amber'
+    });
+  }
+  if (base.reviewOnly) {
+    tasks.push({
+      id: `${dateStr}_sat_rev`,
+      title: 'مراجعة خفيفة للأخطاء والقوانين (يوم السبت)',
+      tag: 'مراجعة',
+      badge: 'badge-mint'
+    });
+  }
+  return tasks;
+}
+
+function toggleTrainingTask(taskId, isQuant, amount) {
+  const wasDone = !!state.completedTraining[taskId];
+  state.completedTraining[taskId] = !wasDone;
+  if (isQuant) {
+    state.doneQuant = Math.max(0, state.doneQuant + (!wasDone ? amount : -amount));
+  }
+  saveState();
+}
+
+function advanceTaskFromNextDay() {
+  const today = getTodayISO();
+  const nextDate = new Date(today + 'T12:00:00');
+  nextDate.setDate(nextDate.getDate() + 1);
+  const nextIso = nextDate.toISOString().slice(0, 10);
+  const nextTarget = getDailyTargets(nextIso);
+  const addQ = nextTarget.quant || 40;
+  const addV = nextTarget.verbal || 15;
+
+  if (!state.advancedCounts[today]) state.advancedCounts[today] = { quant: 0, verbal: 0 };
+  state.advancedCounts[today].quant += addQ;
+  state.advancedCounts[today].verbal += addV;
+  state.doneQuant += addQ;
+  state.doneVerbal += addV;
+  saveState();
+}
+
+function openFreezeModal() {
+  document.getElementById('freezeReasonInput').value = '';
+  document.getElementById('freezeModal').classList.add('open');
+}
+
+function closeFreezeModal() {
+  document.getElementById('freezeModal').classList.remove('open');
+}
+
+function confirmFreezeToday() {
+  const reason = document.getElementById('freezeReasonInput').value.trim();
+  if (!reason) {
+    alert('يرجى كتابة سبب تجميد اليوم أولاً.');
+    return;
+  }
+  state.frozenDays[getTodayISO()] = reason;
+  closeFreezeModal();
+  saveState();
+}
+
+function unfreezeToday() {
+  delete state.frozenDays[getTodayISO()];
+  saveState();
+}
+
+function computePredictedExamDate() {
+  const remQ = Math.max(0, state.targetQuant - state.doneQuant);
+  const remV = Math.max(0, state.targetVerbal - state.doneVerbal);
+  const avgDailyQ = 51;
+  const avgDailyV = 16;
+  const daysByQ = Math.ceil(remQ / avgDailyQ);
+  const daysByV = Math.ceil(remV / avgDailyV);
+  const frozenCount = Object.keys(state.frozenDays).length;
+
+  const totalSteps = state.units.length * 4;
+  const doneSteps = state.units.reduce((acc, u) => acc + u.steps.filter(s => s.done).length, 0);
+  const remFoundDays = doneSteps >= totalSteps ? 0 : Math.ceil(state.foundDays * (1 - doneSteps / totalSteps));
+
+  const neededDays = Math.max(daysByQ, daysByV, remFoundDays) + frozenCount * 2;
+  const pred = new Date(getTodayISO() + 'T12:00:00');
+  pred.setDate(pred.getDate() + Math.max(1, neededDays));
+  return pred.toISOString().slice(0, 10);
+}
+
+function updatePlanSettings() {
+  state.foundDays = Math.max(1, Number(document.getElementById('foundDaysInput').value) || 30);
+  state.targetQuant = Math.max(1, Number(document.getElementById('targetQuantInput').value) || 2400);
+  state.targetVerbal = Math.max(1, Number(document.getElementById('targetVerbalInput').value) || 300);
+  state.doneQuant = Math.max(0, Number(document.getElementById('doneQuantInput').value) || 0);
+  state.doneVerbal = Math.max(0, Number(document.getElementById('doneVerbalInput').value) || 0);
+  saveState();
+}
+
+function updateUnitName(uIdx, val) {
+  state.units[uIdx].customName = val;
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+}
+
+function toggleFoundStep(uIdx, sIdx) {
+  const unit = state.units[uIdx];
+  const step = unit.steps[sIdx];
+  if (!step.done && sIdx > 0 && !unit.steps[sIdx - 1].done) return;
+  step.done = !step.done;
+  if (!step.done) {
+    for (let j = sIdx + 1; j < unit.steps.length; j++) {
+      unit.steps[j].done = false;
+    }
+  }
+  saveState();
+}
+
+function updateStepLink(uIdx, sIdx, val) {
+  state.units[uIdx].steps[sIdx].link = val.trim();
+  saveState();
+}
+
+function ensureDailyQuiz() {
+  const today = getTodayISO();
+  if (state.dailyQuiz.date !== today || !state.dailyQuiz.qIds.length) {
+    const quantPool = QUESTION_BANK.filter(q => q.sec === 'كمي');
+    const verbalPool = QUESTION_BANK.filter(q => q.sec === 'لفظي');
+    const pick = (arr, n) => {
+      const copy = [...arr];
+      const out = [];
+      while (out.length < n && copy.length) {
+        out.push(copy.splice(Math.floor(Math.random() * copy.length), 1)[0].id);
+      }
+      return out;
+    };
+    state.dailyQuiz = {
+      date: today,
+      qIds: [...pick(quantPool, 5), ...pick(verbalPool, 5)],
+      answers: {},
+      completed: false
+    };
+  }
+}
+
+function answerDailyQuiz(qId, optIdx) {
+  if (state.dailyQuiz.completed) return;
+  const q = QUESTION_BANK.find(x => x.id === qId);
+  state.dailyQuiz.answers[qId] = optIdx;
+  if (optIdx !== q.ans && !state.mistakes.some(m => m.id === q.id)) {
+    state.mistakes.push({ ...q, wrongOpt: optIdx });
+  }
+  if (Object.keys(state.dailyQuiz.answers).length >= state.dailyQuiz.qIds.length) {
+    state.dailyQuiz.completed = true;
+  }
+  saveState();
+}
+
+function removeMistake(qId) {
+  state.mistakes = state.mistakes.filter(m => m.id !== qId);
+  saveState();
+}
+
+function addVisionItem() {
+  const q = document.getElementById('newVisionQuote').value.trim();
+  const img = document.getElementById('newVisionImgUrl').value.trim();
+  if (!q && !img) return;
+  state.visionItems.unshift({ id: 'v_' + Date.now(), quote: q, img });
+  document.getElementById('newVisionQuote').value = '';
+  document.getElementById('newVisionImgUrl').value = '';
+  saveState();
+}
+
+function addVisionImageFile(ev) {
+  const file = ev.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = () => {
+    const q = document.getElementById('newVisionQuote').value.trim();
+    state.visionItems.unshift({ id: 'v_' + Date.now(), quote: q, img: reader.result });
+    document.getElementById('newVisionQuote').value = '';
+    saveState();
+  };
+  reader.readAsDataURL(file);
+}
+
+function deleteVisionItem(id) {
+  state.visionItems = state.visionItems.filter(v => v.id !== id);
+  saveState();
+}
+
+function toggleTimer() {
+  const btn = document.getElementById('timerToggleBtn');
+  if (timerInterval) {
+    clearInterval(timerInterval);
+    timerInterval = null;
+    btn.textContent = 'ابدئي';
+    saveState();
+  } else {
+    btn.textContent = 'إيقاف';
+    timerInterval = setInterval(() => {
+      state.todaySec += 1;
+      document.getElementById('todayTimerDisplay').textContent = formatHMS(state.todaySec);
+    }, 1000);
+  }
+}
+
+function resetTodayTimer() {
+  if (timerInterval) {
+    clearInterval(timerInterval);
+    timerInterval = null;
+    document.getElementById('timerToggleBtn').textContent = 'ابدئي';
+  }
+  state.todaySec = 0;
+  saveState();
+}
+
+function formatHMS(sec) {
+  const h = String(Math.floor(sec / 3600)).padStart(2, '0');
+  const m = String(Math.floor((sec % 3600) / 60)).padStart(2, '0');
+  const s = String(sec % 60).padStart(2, '0');
+  return `${h}:${m}:${s}`;
+}
+
+function changeMonth(delta) {
+  calMonth += delta;
+  if (calMonth > 11) { calMonth = 0; calYear += 1; }
+  if (calMonth < 0) { calMonth = 11; calYear -= 1; }
+  renderCalendar();
+}
+
+function openEventModal(prefillDate) {
+  document.getElementById('evDateInput').value = prefillDate || getTodayISO();
+  document.getElementById('evTitleInput').value = '';
+  document.getElementById('evTypeInput').value = 'custom';
+  document.getElementById('eventModal').classList.add('open');
+}
+
+function closeEventModal() {
+  document.getElementById('eventModal').classList.remove('open');
+}
+
+function saveCalendarEvent() {
+  const date = document.getElementById('evDateInput').value;
+  const title = document.getElementById('evTitleInput').value.trim();
+  const type = document.getElementById('evTypeInput').value;
+  if (!date || !title) return;
+  state.customEvents.push({ id: 'ev_' + Date.now(), date, title, type });
+  closeEventModal();
+  saveState();
+}
+
+function getEventsForDate(isoDate, predDate) {
+  const list = [];
+  BUILTIN_EVENTS.forEach(ev => {
+    if (isoDate >= ev.date && isoDate <= ev.endDate) list.push(ev);
+  });
+  state.customEvents.forEach(ev => {
+    if (ev.date === isoDate) list.push(ev);
+  });
+  if (isoDate === predDate) {
+    list.push({ title: 'الختمة المتوقعة للقدرات', type: 'predict' });
+  }
+  return list;
+}
+
+function renderCalendar() {
+  const monthNames = ['يناير','فبراير','مارس','أبريل','مايو','يونيو','يوليو','أغسطس','سبتمبر','أكتوبر','نوفمبر','ديسمبر'];
+  document.getElementById('calMonthTitle').textContent = `${monthNames[calMonth]} ${calYear}`;
+
+  const heads = ['الأحد','الاثنين','الثلاثاء','الأربعاء','الخميس','الجمعة','السبت'];
+  document.getElementById('calHeadGrid').innerHTML = heads.map(h => `<div class="cal-head">${h}</div>`).join('');
+
+  const firstDay = new Date(calYear, calMonth, 1).getDay();
+  const daysInMonth = new Date(calYear, calMonth + 1, 0).getDate();
+  const todayIso = getTodayISO();
+  const predDate = computePredictedExamDate();
+
+  let html = '';
+  for (let i = 0; i < firstDay; i++) html += `<div class="cal-day empty"></div>`;
+
+  for (let d = 1; d <= daysInMonth; d++) {
+    const iso = `${calYear}-${String(calMonth + 1).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
+    const evs = getEventsForDate(iso, predDate);
+    const isToday = iso === todayIso ? 'today' : '';
+    const dots = evs.slice(0, 2).map(e => `<div class="cal-dot ev-${e.type}">${e.title}</div>`).join('');
+    html += `
+      <div class="cal-day ${isToday}" onclick="openEventModal('${iso}')">
+        <div style="font-weight:800;">${d}</div>
+        <div>${dots}</div>
+      </div>
+    `;
+  }
+  document.getElementById('calDaysGrid').innerHTML = html;
+}
+
+function addGoldenIdea() {
+  const title = document.getElementById('ideaTitle').value.trim();
+  const body = document.getElementById('ideaBody').value.trim();
+  if (!title && !body) return;
+  state.goldenIdeas.unshift({ id: 'gi_' + Date.now(), title: title || 'فكرة ذهبية', body });
+  document.getElementById('ideaTitle').value = '';
+  document.getElementById('ideaBody').value = '';
+  saveState();
+}
+
+function deleteGoldenIdea(id) {
+  state.goldenIdeas = state.goldenIdeas.filter(x => x.id !== id);
+  saveState();
+}
+
+function addUserFile(ev) {
+  const file = ev.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = () => {
+    state.files.unshift({
+      id: 'f_' + Date.now(),
+      name: file.name,
+      sizeKB: Math.round(file.size / 1024),
+      url: reader.result
+    });
+    saveState();
+  };
+  reader.readAsDataURL(file);
+}
+
+function deleteUserFile(id) {
+  state.files = state.files.filter(f => f.id !== id);
+  saveState();
+}
+
+function exportBackup() {
+  const blob = new Blob([JSON.stringify(state, null, 2)], { type: 'application/json' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = `reital-qudrat-backup-${getTodayISO()}.json`;
+  a.click();
+}
+
+function importBackup(ev) {
+  const file = ev.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = () => {
+    try {
+      state = { ...defaultState(), ...JSON.parse(reader.result) };
+      saveState();
+      alert('تمت استعادة بياناتكِ بنجاح.');
+    } catch {
+      alert('تعذر قراءة ملف النسخة الاحتياطية.');
+    }
+  };
+  reader.readAsText(file);
+}
+
+const canvas = document.getElementById('boardCanvas');
+const ctx = canvas.getContext('2d');
+let drawing = false;
+
+function resizeCanvas() {
+  const rect = canvas.getBoundingClientRect();
+  if (!rect.width) return;
+  const imgData = canvas.width && canvas.height ? ctx.getImageData(0, 0, canvas.width, canvas.height) : null;
+  canvas.width = rect.width;
+  canvas.height = rect.height;
+  if (imgData) ctx.putImageData(imgData, 0, 0);
+}
+
+function getPointerPos(e) {
+  const rect = canvas.getBoundingClientRect();
+  const pt = e.touches ? e.touches[0] : e;
+  return { x: pt.clientX - rect.left, y: pt.clientY - rect.top };
+}
+
+canvas.addEventListener('pointerdown', e => {
+  drawing = true;
+  const p = getPointerPos(e);
+  ctx.beginPath();
+  ctx.moveTo(p.x, p.y);
+});
+
+canvas.addEventListener('pointermove', e => {
+  if (!drawing) return;
+  const p = getPointerPos(e);
+  ctx.lineTo(p.x, p.y);
+  ctx.strokeStyle = document.getElementById('penColor').value;
+  ctx.lineWidth = Number(document.getElementById('penSize').value);
+  ctx.lineCap = 'round';
+  ctx.stroke();
+});
+
+window.addEventListener('pointerup', () => {
+  drawing = false;
+});
+
+function clearBoard() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+}
+
+function renderAll() {
+  ensureDailyQuiz();
+  const today = getTodayISO();
+  document.getElementById('todayLabel').textContent = `التاريخ الميلادي اليوم: ${today}`;
+  document.getElementById('topQuote').textContent = QUOTES[state.quoteIdx % QUOTES.length];
+
+  const frozenBanner = document.getElementById('frozenBanner');
+  if (state.frozenDays[today]) {
+    frozenBanner.classList.remove('hidden');
+    document.getElementById('frozenReasonText').textContent = state.frozenDays[today];
+  } else {
+    frozenBanner.classList.add('hidden');
+  }
+
+  const tahStart = new Date('2027-01-09T00:00:00');
+  const nowStart = new Date(today + 'T00:00:00');
+  const diffDays = Math.ceil((tahStart - nowStart) / (1000 * 60 * 60 * 24));
+  document.getElementById('tahDaysLeft').textContent = diffDays > 0 ? `${diffDays} يوم` : 'حان الموعد';
+
+  const pred = computePredictedExamDate();
+  document.getElementById('predictedExamDate').textContent = pred;
+
+  const totalSteps = state.units.length * 4;
+  const doneSteps = state.units.reduce((a, u) => a + u.steps.filter(s => s.done).length, 0);
+  const fPct = Math.round((doneSteps / totalSteps) * 100);
+  document.getElementById('foundPercent').textContent = `${fPct}%`;
+  document.getElementById('foundBar').style.width = `${fPct}%`;
+  document.getElementById('foundSummaryBadge').textContent = `${doneSteps} / ${totalSteps} مكتمل`;
+
+  document.getElementById('todayTimerDisplay').textContent = formatHMS(state.todaySec);
+
+  document.getElementById('foundDaysInput').value = state.foundDays;
+  document.getElementById('targetQuantInput').value = state.targetQuant;
+  document.getElementById('targetVerbalInput').value = state.targetVerbal;
+  document.getElementById('doneQuantInput').value = state.doneQuant;
+  document.getElementById('doneVerbalInput').value = state.doneVerbal;
+
+  const qPct = Math.min(100, Math.round((state.doneQuant / state.targetQuant) * 100));
+  const vPct = Math.min(100, Math.round((state.doneVerbal / state.targetVerbal) * 100));
+  const ovPct = Math.round((qPct + vPct) / 2);
+  document.getElementById('overallTrainBar').style.width = `${ovPct}%`;
+  document.getElementById('overallTrainText').textContent =
+    `الكمي: ${state.doneQuant} / ${state.targetQuant} (${qPct}%) • اللفظي: ${state.doneVerbal} / ${state.targetVerbal} (${vPct}%)`;
+
+  document.getElementById('visionGrid').innerHTML = state.visionItems.map(v => `
+    <div class="vision-card">
+      ${v.img ? `<img src="${v.img}" alt="إلهام" />` : ''}
+      <div style="padding:10px;font-size:13px;font-weight:700;color:var(--plum);">${v.quote || 'بطاقة إلهام'}</div>
+      <button class="btn btn-outline" style="position:absolute;top:6px;left:6px;padding:3px 7px;font-size:11px;background:#fff;" onclick="deleteVisionItem('${v.id}')">✕</button>
+    </div>
+  `).join('');
+
+  document.getElementById('unitsContainer').innerHTML = state.units.map((u, uIdx) => `
+    <div class="unit-box">
+      <div class="unit-header">
+        <span class="badge badge-plum">وحدة ${u.num}</span>
+        <input type="text" placeholder="اكتبي اسم الوحدة هنا..." value="${u.customName || ''}"
+          style="max-width:340px;font-weight:800;color:var(--plum);"
+          oninput="updateUnitName(${uIdx}, this.value)" />
+      </div>
+      ${u.steps.map((st, sIdx) => {
+        const locked = sIdx > 0 && !u.steps[sIdx - 1].done;
+        const cls = st.done ? 'completed' : (locked ? 'locked' : '');
+        return `
+          <div class="step-row ${cls}">
+            <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+              <span class="badge ${st.done ? 'badge-mint' : (locked ? 'badge-amber' : 'badge-rose')}">
+                ${st.done ? 'مكتمل' : (locked ? 'مقفل' : 'متاح')}
+              </span>
+              <strong style="font-size:13.5px;">${st.label}</strong>
+            </div>
+            <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
+              <input type="url" placeholder="رابط التلغرام..." value="${st.link || ''}" style="width:180px;padding:6px 9px;font-size:12px;"
+                onchange="updateStepLink(${uIdx}, ${sIdx}, this.value)" />
+              ${st.link ? `<a href="${st.link}" target="_blank" rel="noopener" class="btn btn-soft" style="padding:6px 10px;font-size:12px;text-decoration:none;">فتح الفيديو</a>` : ''}
+              <button class="btn ${st.done ? 'btn-mint' : 'btn-primary'}" style="padding:6px 12px;font-size:12px;"
+                ${locked ? 'disabled' : ''} onclick="toggleFoundStep(${uIdx}, ${sIdx})">
+                ${st.done ? 'تم ✓' : 'تأكيد تم'}
+              </button>
+            </div>
+          </div>
+        `;
+      }).join('')}
+    </div>
+  `).join('');
+
+  const dayInfo = getDailyTargets(today);
+  document.getElementById('trainDayHeading').textContent = `مهام التدريب اليومي — ${dayInfo.label}`;
+  const tasks = getTrainingTasksForDate(today);
+  document.getElementById('trainingTasksList').innerHTML = tasks.map(t => {
+    const done = !!state.completedTraining[t.id];
+    const qMatch = t.title.match(/حل (\d+) سؤال كمي/);
+    const qAmt = qMatch ? Number(qMatch[1]) : 0;
+    return `
+      <div class="task-item ${done ? 'done' : ''}">
+        <div style="display:flex;align-items:center;gap:10px;">
+          <span class="badge ${t.badge}">${t.tag}</span>
+          <span style="font-weight:700;font-size:13.5px;${done ? 'text-decoration:line-through;opacity:0.75;' : ''}">${t.title}</span>
+        </div>
+        <button class="btn ${done ? 'btn-mint' : 'btn-primary'}" onclick="toggleTrainingTask('${t.id}', ${qAmt > 0}, ${qAmt})">
+          ${done ? 'تم الإنجاز ✓' : 'إتمام'}
+        </button>
+      </div>
+    `;
+  }).join('');
+
+  const ansCount = Object.keys(state.dailyQuiz.answers).length;
+  document.getElementById('quizCounterBadge').textContent = `${ansCount} / 10`;
+  const quizBox = document.getElementById('dailyQuizBox');
+  if (state.dailyQuiz.completed) {
+    let score = 0;
+    state.dailyQuiz.qIds.forEach(id => {
+      const q = QUESTION_BANK.find(x => x.id === id);
+      if (state.dailyQuiz.answers[id] === q.ans) score++;
+    });
+    quizBox.innerHTML = `
+      <div style="text-align:center;padding:20px;background:var(--mint-light);border-radius:16px;">
+        <div style="font-size:18px;font-weight:800;color:var(--mint);">أنهيتِ تحدي اليوم (10 / 10)!</div>
+        <div style="margin:6px 0;font-weight:700;">نتيجتكِ: ${score} من 10</div>
+        <div style="font-size:13px;color:var(--muted);">تم قفل التحدي حتى الغد، وتم نقل أي سؤال أخطأتِ فيه إلى دفتر الأخطاء.</div>
+      </div>
+    `;
+  } else {
+    const nextQId = state.dailyQuiz.qIds.find(id => state.dailyQuiz.answers[id] === undefined);
+    const q = QUESTION_BANK.find(x => x.id === nextQId);
+    quizBox.innerHTML = `
+      <div style="margin-bottom:8px;"><span class="badge badge-plum">${q.sec}</span> • سؤال ${ansCount + 1} من 10</div>
+      <div style="font-weight:800;font-size:15px;margin-bottom:12px;">${q.q}</div>
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        ${q.opts.map((o, idx) => `
+          <button class="btn btn-outline" style="justify-content:flex-start;text-align:right;padding:11px 14px;" onclick="answerDailyQuiz('${q.id}', ${idx})">${o}</button>
+        `).join('')}
+      </div>
+    `;
+  }
+
+  document.getElementById('mistakesCountBadge').textContent = `${state.mistakes.length} خطأ`;
+  document.getElementById('mistakesList').innerHTML = state.mistakes.length
+    ? state.mistakes.map(m => `
+      <div class="task-item">
+        <div>
+          <span class="badge badge-rose">${m.sec}</span>
+          <div style="font-weight:700;font-size:13.5px;margin-top:4px;">${m.q}</div>
+          <div style="font-size:12px;color:var(--mint);margin-top:4px;">الإجابة الصحيحة: ${m.opts[m.ans]} — ${m.exp}</div>
+        </div>
+        <button class="btn btn-mint" onclick="removeMistake('${m.id}')">أتقنته ✓</button>
+      </div>
+    `).join('')
+    : `<div style="font-size:13px;color:var(--muted);">لا توجد أخطاء مسجلة حالياً؛ أي خطأ في التحدي اليومي سيظهر هنا للمراجعة.</div>`;
+
+  document.getElementById('goldenIdeasList').innerHTML = state.goldenIdeas.map(g => `
+    <div class="task-item">
+      <div>
+        <div style="font-weight:800;color:var(--plum);">${g.title}</div>
+        <div style="font-size:13px;">${g.body}</div>
+      </div>
+      <button class="btn btn-outline" onclick="deleteGoldenIdea('${g.id}')">حذف</button>
+    </div>
+  `).join('');
+
+  document.getElementById('filesList').innerHTML = state.files.map(f => `
+    <div class="task-item">
+      <div>
+        <div style="font-weight:700;font-size:13.5px;">${f.name}</div>
+        <div style="font-size:11.5px;color:var(--muted);">${f.sizeKB} KB</div>
+      </div>
+      <div style="display:flex;gap:6px;">
+        <a href="${f.url}" download="${f.name}" class="btn btn-soft" style="text-decoration:none;">فتح/تحميل</a>
+        <button class="btn btn-outline" onclick="deleteUserFile('${f.id}')">حذف</button>
+      </div>
+    </div>
+  `).join('');
+
+  renderCalendar();
+}
+
+renderAll();
+</script>
+</body>
+</html>
